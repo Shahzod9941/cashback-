@@ -1,27 +1,40 @@
-console.log('worked');
-
-let sumCashback = 0;
 const cashbackLimit = 3000;
 
-const regularPurchase = 2000;
-const regularPurchasePercent = 0.01;
+const REGULAR_CATEGORY = 'regular';
+const INCREATED_CATEGORY = 'increated';
+const SPECIAL_CATEGORY = 'special';
+const purchases = [
+    {
+        amount: 2_000,
+        regularPercent: 0.01,
+        category: REGULAR_CATEGORY,
+    },
+    {
+        amount: 2_000,
+        increatedPercent: 0.05,
+        category: INCREATED_CATEGORY,
+    },
+    {
+        amount: 2_000,
+        specialPercent: 0.3,
+        category: SPECIAL_CATEGORY,
+    },
+];
 
-const increatedPurchase = 2000;
-const increatedPurchasePercent = 0.05;
+let cashback = 0;
 
-const specialPurchase = 2000;
-const specialPurchasePercent = 0.3;
-
-let purchases = {
-    regular: regularPurchase * regularPurchasePercent,
-    increated: increatedPurchase * increatedPurchasePercent,
-    special: specialPurchase * specialPurchasePercent,
-};
-
-for (let purchase in purchases) {
-    sumCashback += purchases[purchase]
+for (const purchase of purchases) {
+    if(purchase.category === REGULAR_CATEGORY){
+        cashback += purchase.amount * purchase.regularPercent;
+    }
+    if (purchase.category === INCREATED_CATEGORY){
+        cashback += purchase.amount * purchase.increatedPercent;
+    }
+    if (purchase.category === SPECIAL_CATEGORY){
+        cashback += purchase.amount * purchase.specialPercent;
+    }
 }
-if (sumCashback > cashbackLimit){
-    sumCashback === cashbackLimit;
+if (cashback > cashbackLimit){
+    cashback = cashbackLimit;
 }
-console.log(sumCashback);
+console.log(cashback);
