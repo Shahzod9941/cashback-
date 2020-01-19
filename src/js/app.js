@@ -27,10 +27,10 @@ for (const purchase of purchases) {
     if(purchase.category === REGULAR_CATEGORY){
         cashback += purchase.amount * purchase.regularPercent;
     }
-    if (purchase.category === INCREATED_CATEGORY){
+    else if (purchase.category === INCREATED_CATEGORY){
         cashback += purchase.amount * purchase.increatedPercent;
     }
-    if (purchase.category === SPECIAL_CATEGORY){
+    else if (purchase.category === SPECIAL_CATEGORY){
         cashback += purchase.amount * purchase.specialPercent;
     }
 }
